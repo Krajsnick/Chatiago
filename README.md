@@ -1,6 +1,6 @@
 #Chatiago
 
 ### Using
-* #####Node.js
-* #####Socket.io
-* #####Foundation 5
+* Node.js
+* Socket.io
+* Foundation 5
