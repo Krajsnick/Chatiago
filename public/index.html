@@ -5,17 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Foundation | Welcome</title>
   <link rel="stylesheet" href="css/foundation.css" />
+  <link rel="stylesheet" href="css/chat.css" />
   <script src="js/vendor/modernizr.js"></script>
 </head>
 <body>
 
   <div class="row">
-       
+    <h1 class="small-12 large-6 columns text-center">Chatiago</h1>
+    <h1 class="small-12 large-6 columns text-center">Instant messages</h1>
+  </div>
+
+  <div class="row">
+    <div id="chat" class="small-12 large-12 columns"></div>
+  </div>
+
+  <div class="row">
+    <input type="text" id="chat-message" />
   </div>
 
   <script src="/socket.io/socket.io.js"></script>
   <script src="js/vendor/jquery.js"></script>
   <script src="js/foundation.min.js"></script>
+  <script src="js/chat.js"></script>
   <script>
     $(document).foundation();
   </script>
