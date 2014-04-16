@@ -1,4 +1,5 @@
-var ws = io.connect(window.location.origin);
+var ws = io.connect(window.location.origin),
+    $chat = $('#chat');
 
 $('#chat-message').keypress(function(e) {
   if (e.keyCode == 13) {
@@ -13,5 +14,5 @@ $('#chat-message').keypress(function(e) {
 
 ws.on('update-chat', function(msgData) {
   var htmlMsg = "<b>" + msgData.name + ":</b> " + msgData.message + "<br />";
-  $('#chat').append(htmlMsg);
+  $chat.append(htmlMsg).scrollTop($chat[0].scrollHeight);
 });
