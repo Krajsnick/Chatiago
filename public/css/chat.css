@@ -2,5 +2,22 @@
   height: 400px;
   overflow-y: scroll;
   background: #77c6e8;
-  line-height: 30px;
+  line-height: 28px;
+}
+
+#chat-message {
+}
+
+#user-list {
+  background: #5ae182;
+  color: #ffffff;
+}
+
+#user-list ul {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+#user-list ul li {
+
 }

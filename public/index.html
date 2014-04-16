@@ -15,12 +15,24 @@
     <h1 class="small-12 large-6 columns text-center">Instant messages</h1>
   </div>
 
-  <div class="row">
-    <div id="chat" class="small-12 large-12 columns"></div>
+  <div id="chat-name-row" class="row">
+    <h3 class="small-2 large-2 columns text-right">Name:</h3>
+    <div class="small-10 large-10 columns text-center">
+      <input type="text" id="chat-name" />
+    </div>
+  </div>
+
+  <div id="chat-row" class="row" style="display:none;">
+    <div id="chat" class="small-9 large-9 columns"></div>
+    <div id="user-list" class="small-3 large-3 columns">
+      <ul>
+        <!-- li's added here per connected user -->
+      </ul>
+    </div>
   </div>
 
   <div class="row">
-    <input type="text" id="chat-message" />
+    <input type="text" id="chat-message" style="display:none" />
   </div>
 
   <script src="/socket.io/socket.io.js"></script>
