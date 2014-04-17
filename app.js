@@ -17,7 +17,7 @@ if (process.env.NODE_ENV == 'development') {
 
 app.use(express.static(__dirname + '/public'));
 
-var connectedNames = [];
+var connectedNames = {};
 
 io.sockets.on('connection', function(socket) {
 
@@ -30,17 +30,20 @@ io.sockets.on('connection', function(socket) {
   socket.on('set-name', function(data) {
     data = validator.escape(data);
     socket.set('name', data, function() {
-      connectedNames.push(data);
-      io.sockets.emit('new-user-connected', connectedNames);
+      connectedNames[socket.id] = data;
+      io.sockets.emit('new-user-connected', getValues(connectedNames));
     });
   });
 
   socket.on('disconnect', function() {
     socket.get('name', function(err, name) {
-      var index = connectedNames.indexOf(name);
-      connectedNames.splice(index, 1);
-      io.sockets.emit('new-user-connected', connectedNames);
+      delete connectedNames[socket.id];
+      io.sockets.emit('new-user-connected', getValues(connectedNames));
     });
   });
 
 });
+
+function getValues(obj) {
+  return Object.keys(obj).map(function(key) {return obj[key];});
+}
