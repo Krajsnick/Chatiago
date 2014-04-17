@@ -17,10 +17,9 @@ if ($('#chat-name').keypress(function(e) {
 
 $('#chat-message').keypress(function(e) {
   if (e.keyCode == 13) {
-    console.log("Chat message sent");
     var message = $(this).val();
 
-    ws.emit('msg-received', {name: nickname, message: message});
+    ws.emit('msg-received', message);
 
     $(this).val('');
   }

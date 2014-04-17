@@ -21,10 +21,9 @@ var connectedNames = {};
 
 io.sockets.on('connection', function(socket) {
 
-  socket.on('msg-received', function(msgData) {
-    msgData.name = validator.escape(msgData.name);
-    msgData.message = validator.escape(msgData.message);
-    io.sockets.emit('update-chat', msgData);
+  socket.on('msg-received', function(message) {
+    message = validator.escape(message);
+    io.sockets.emit('update-chat', {name: connectedNames[socket.id], message: message});
   });
 
   socket.on('set-name', function(data) {
