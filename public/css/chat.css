@@ -8,6 +8,10 @@
 #chat-message {
 }
 
+#chat-name {
+  font-size: 18px;
+}
+
 #user-list {
   background: #5ae182;
   color: #ffffff;
