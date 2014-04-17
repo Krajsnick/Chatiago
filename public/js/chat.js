@@ -7,7 +7,7 @@ if ($('#chat-name').keypress(function(e) {
   if (($('#chat-name').val() != "") && e.keyCode == 13) {
     nickname = $('#chat-name').val();
     $('#chat-name-row').fadeOut('fast', function() {
-      $('#chat-row, #chat-message').fadeIn('slow', function(completion) {
+      $('#chat-row, #chat-message-row').fadeIn('slow', function(completion) {
         $('#chat-message').focus();
       });
     });

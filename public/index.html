@@ -21,16 +21,18 @@
   </div>
 
   <div id="chat-row" class="row" style="display:none;">
-    <div id="chat" class="small-9 large-9 columns"></div>
-    <div id="user-list" class="small-3 large-3 columns">
+    <div id="chat" class="small-8 medium-9 columns"></div>
+    <div id="user-list" class="small-4 medium-3 columns">
       <ul>
         <!-- li's added here per connected user -->
       </ul>
     </div>
   </div>
 
-  <div class="row">
-    <input type="text" id="chat-message" style="display:none" />
+  <div class="row" id="chat-message-row" style="display:none;">
+    <div class="small-10 large-8 small-centered columns">
+      <input type="text" id="chat-message" placeholder="Message..." />
+    </div>
   </div>
 
   <script src="/socket.io/socket.io.js"></script>
