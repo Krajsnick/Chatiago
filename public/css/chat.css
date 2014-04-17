@@ -11,6 +11,8 @@
 #user-list {
   background: #5ae182;
   color: #ffffff;
+  height: 400px;
+  overflow-y: scroll;
 }
 
 #user-list ul {
