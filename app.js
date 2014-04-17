@@ -6,6 +6,7 @@ var express = require('express'),
     validator = require('validator');
 
 if (process.env.NODE_ENV == 'production') {
+  app.enable('trust proxy')
   app.use(logger('short'));
   io.set('log level', 1);
 }
