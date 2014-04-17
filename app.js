@@ -5,7 +5,15 @@ var express = require('express'),
     logger = require('morgan'),
     validator = require('validator');
 
-app.use(logger('dev'));
+if (process.env.NODE_ENV == 'production') {
+  app.use(logger('short'));
+  io.set('log level', 1);
+}
+
+if (process.env.NODE_ENV == 'development') {
+  app.use(logger('dev'));
+}
+
 app.use(express.static(__dirname + '/public'));
 
 var connectedNames = [];
