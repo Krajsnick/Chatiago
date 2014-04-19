@@ -22,7 +22,7 @@
   background: #5ae182;
   color: #ffffff;
   height: 400px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 #user-list ul {
