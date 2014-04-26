@@ -13,7 +13,6 @@ var DB = {
 
   getCurrentChat: function(callback) {
     this.Chat.find().
-    sort({_id: -1}).
     limit(200).
     exec(function(err, docs) {
       if (err) throw err;
