@@ -3,7 +3,8 @@ var express = require('express'),
     server = app.listen(3000),
     io = require('socket.io').listen(server),
     logger = require('morgan'),
-    validator = require('validator');
+    validator = require('validator'),
+    db = require('./db');
 
 if (process.env.NODE_ENV == 'production') {
   app.enable('trust proxy')
@@ -21,9 +22,15 @@ var connectedNames = {};
 
 io.sockets.on('connection', function(socket) {
 
+  db.getCurrentChat(function(data) {
+    socket.emit('update-chat', data);
+  })
+
   socket.on('msg-received', function(message) {
     message = validator.escape(message);
-    io.sockets.emit('update-chat', {name: connectedNames[socket.id], message: message});
+    var data = {name: connectedNames[socket.id], message: message};
+    io.sockets.emit('update-chat', data);
+    db.saveMessage(data);
   });
 
   socket.on('set-name', function(data) {

@@ -26,7 +26,14 @@ $('#chat-message').keypress(function(e) {
 });
 
 ws.on('update-chat', function(msgData) {
-  var htmlMsg = "<b>" + msgData.name + ":</b> " + msgData.message + "<br />";
+  if (msgData instanceof Array) {
+    var htmlMsg = "";
+    msgData.forEach(function(msg) {
+      htmlMsg += "<b>" + msg.name + ":</b> " + msg.message + "<br />";
+    });
+  } else {
+    var htmlMsg = "<b>" + msgData.name + ":</b> " + msgData.message + "<br />";
+  }
   $chat.append(htmlMsg).scrollTop($chat[0].scrollHeight);
 });
 
