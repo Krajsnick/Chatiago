@@ -8,6 +8,7 @@ if ($('#chat-name').keypress(function(e) {
     nickname = $('#chat-name').val();
     $('#chat-name-row').fadeOut('fast', function() {
       $('#chat-row, #chat-message-row').fadeIn('slow', function(completion) {
+        scrollChatToBottom();
         $('#chat-message').focus();
       });
     });
@@ -34,7 +35,8 @@ ws.on('update-chat', function(msgData) {
   } else {
     var htmlMsg = "<b>" + msgData.name + ":</b> " + msgData.message + "<br />";
   }
-  $chat.append(htmlMsg).scrollTop($chat[0].scrollHeight);
+  $chat.append(htmlMsg)
+  scrollChatToBottom();
 });
 
 ws.on('new-user-connected', function(data) {
@@ -46,3 +48,7 @@ ws.on('new-user-connected', function(data) {
 
   $('#user-list ul').html(userLiHtml);
 });
+
+function scrollChatToBottom() {
+  $chat.scrollTop($chat[0].scrollHeight);
+}
