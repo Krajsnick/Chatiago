@@ -4,10 +4,10 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "express": "4.x",
-    "morgan": "1.x",
-    "socket.io": "0.9.x",
-    "validator": "3.9.x",
-    "mongoose": "^3.8.8"
+    "express": "^4.15.3",
+    "mongoose": "^4.10.5",
+    "morgan": "^1.8.2",
+    "socket.io": "^2.0.2",
+    "validator": "^7.0.0"
   }
 }
