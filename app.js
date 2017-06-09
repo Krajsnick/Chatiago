@@ -1,18 +1,18 @@
 var express = require('express'),
     app = express(),
-    server = app.listen(3000),
-    io = require('socket.io').listen(server),
+    server = require('http').Server(app),
+    io = require('socket.io')(server),
     logger = require('morgan'),
     validator = require('validator'),
     db = require('./db');
 
+server.listen(process.env.PORT || 3000);
+
 if (process.env.NODE_ENV == 'production') {
   app.enable('trust proxy')
-  app.use(logger('short'));
+  app.use(logger('combined'));
   io.set('log level', 1);
-}
-
-if (process.env.NODE_ENV == 'development') {
+} else {
   app.use(logger('dev'));
 }
 
