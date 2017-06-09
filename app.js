@@ -35,17 +35,14 @@ io.sockets.on('connection', function(socket) {
 
   socket.on('set-name', function(data) {
     data = validator.escape(data);
-    socket.set('name', data, function() {
-      connectedNames[socket.id] = data;
-      io.sockets.emit('new-user-connected', getValues(connectedNames));
-    });
+    socket.name = data;
+    connectedNames[socket.id] = data;
+    io.sockets.emit('new-user-connected', getValues(connectedNames));
   });
 
   socket.on('disconnect', function() {
-    socket.get('name', function(err, name) {
-      delete connectedNames[socket.id];
-      io.sockets.emit('new-user-connected', getValues(connectedNames));
-    });
+    delete connectedNames[socket.id];
+    io.sockets.emit('new-user-connected', getValues(connectedNames));
   });
 
 });
